@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>HelloVue</title>
+  <style>
+    .redText{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h2>{{msg}}</h2>
+    <h2>{{name}}</h2>
+
+    <ul>
+      <li v-for="(item, index) in movies" :class="{redText: index === activeIndex}" @click="{activeIndex = index}">{{item}}</li>
+    </ul>
+
+    <h2>当前计数:{{counter}}</h2>
+    <button v-on:click="counter++">+</button>
+    <button v-on:click="counter--">-</button>
+  </div>
+</body>
+
+<script>
+  const app = new Vue({
+    el :"#app",
+    data:{
+      msg:"hello Dennis!",
+      name:"hi there!",
+      movies: ["1","2","3","4"],
+      counter: 0,
+      activeIndex: 0,
+    },
+    method:{
+      add: function(){
+        this.counter++;
+        console.log(counter);
+      },
+      sub: function(){
+        this.counter--;
+        console.log(counter);
+      }
+    }
+  })
+</script>
+</html>
