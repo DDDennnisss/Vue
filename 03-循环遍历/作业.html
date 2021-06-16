@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .active {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <ul>
+        <li
+          v-for="(item,index) in name"
+          :class="{active: currentIndex === index}"
+          @click="liClick(index)"
+        >
+          {{item}}
+        </li>
+      </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+      const app = new Vue({
+        el: "#app", //绑定到DOM上
+        data: {
+          name: ["1", "2", "3", "4", "5"],
+          currentIndex: 0,
+        },
+        methods: {
+          liClick(index) {
+            this.currentIndex = index;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

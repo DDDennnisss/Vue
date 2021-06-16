@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <span v-if="isUser">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="username" />
+      </span>
+      <span v-else="!isUser">
+        <label for="username">Email</label>
+        <input type="text" id="email" placeholder="email" />
+      </span>
+      <button @click="switchHandle">Switch</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app", //绑定到DOM上
+        data: {
+          isUser: true,
+        },
+        //方法集合
+        methods: {
+          switchHandle: function () {
+            this.isUser = !this.isUser;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
