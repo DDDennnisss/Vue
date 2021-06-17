@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <cpn1></cpn1>
+      <cpn2></cpn2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/x-template" id="cpn">
+      <div>
+        <h2>{{title}}</h2>
+        <p>我是内容，哈哈哈11</p>
+        <p>我是内容，哈哈哈11</p>
+      </div>
+    </script>
+    <template id="cpn2">
+      <div>
+        <h2>counter: {{counter}}</h2>
+        <button @click="counter++">+</button>
+        <button @click="decrement">-</button>
+      </div>
+    </template>
+    <script>
+      //子组件
+      //创建组件构造器对象 父组件 全局组件
+      Vue.component("cpn1", {
+        template: "#cpn",
+        data() {
+          return {
+            title: "abc",
+          };
+        },
+      });
+      Vue.component("cpn2", {
+        template: "#cpn2",
+        data() {
+          return {
+            counter: 0,
+          };
+        },
+        methods: {
+          increment() {
+            this.counter++;
+          },
+          decrement() {
+            this.counter--;
+          },
+        },
+      });
+
+      const app = new Vue({
+        el: "#app", //绑定到DOM上
+        data: {},
+      });
+    </script>
+  </body>
+</html>
