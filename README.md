@@ -15,6 +15,7 @@ A repo of learning Vue
 | [Vue 方法绑定] | 2021-06-08                 | P28 -- P33           |
 | [准备面试]     | 2021-06-08 ---- 2021-06-16 | 准备阿里面试暂停学习 |
 | [Vue 高级函数] | 2021-06-16                 | P34 -- P45           |
+| [Vue 双向绑定] | 2021-06-17                 | P46 -- P45           |
 
 #Vue 基础
 
@@ -41,7 +42,6 @@ v-bind(img v-bind:src=""绑定动态属性)
 同等与 <h1 class="active line">
 
 **计算属性**
-
 computed : 用于合并属性,计算属性(比如商品总价格)
 
 **Event 绑定**
@@ -73,3 +73,36 @@ DIFF 算法查 React 笔记
 2. map：
 
 3. reduce
+
+**双向绑定**
+<input type="text" v-model="message"> //等于下面
+<input type="text" :value="message" @input="message = $event.target.value">
+
+v-model 结合 radio 类型
+<input type="radio" id="female" name="sex" value="女"> //如果需要互斥选项，需要绑定同一组 name 名
+<input type="radio" id="male" name="sex" value="男">
+
+<input type="radio" id="female" value="女" v-model="sex"> //如果有 v-model，绑定同一组 name 名可以省略
+<input type="radio" id="male"  value="男" v-model="sex">
+
+v-model 结合 checkbox 类型
+单选框对应的是 boolean
+多选框对应的是数组
+
+v-model 结合 select 类型
+在 select tag 中绑定 v-model
+单选框对应的是 string
+多选框对应的是数组 multiple 属性 tag
+
+**值绑定**
+<label v-for="item in originHobbies" :for="item">
+<input type="checkbox" :value="item" :id="item" v-model="hobbies">{{item}}
+</label>
+
+**V-model 修饰符**
+<input type="text" v-model.lazy="message"> //失去焦点或者按回车才会更新 类似防抖
+.number
+.trim
+
+**Vue 组件**
+局部组件和全局组件： 一般使用局部组件
