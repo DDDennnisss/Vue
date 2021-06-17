@@ -24,6 +24,8 @@
         phone: <span>{{phone}}</span>
       </p>
     </p>
+    <input type="text" v-model="message"> //等于下面
+    <input type="text" :value="message" @input="message = $event.target.value">
   </div>
   
   <script>
