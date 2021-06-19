@@ -16,6 +16,7 @@ A repo of learning Vue
 | [准备面试]                                                                                  | 2021-06-08 ---- 2021-06-16 | 准备阿里面试暂停学习 |
 | [Vue 高级函数]                                                                              | 2021-06-16                 | P34 -- P45           |
 | [Vue 阶段知识总结](https://www.bilibili.com/video/BV15741177Eh?p=63&spm_id_from=pageDriver) | 2021-06-17                 | P46 -- P63           |
+| [Vue 阶段知识总结]                                                                          | 2021-06-18                 | P64 -- P75           |
 
 #Vue 基础
 
@@ -119,3 +120,36 @@ props
 
 子传父
 $emit() 自定义事件 @-XXXX
+
+**父子对象的访问方式**
+父组件访问子组件: $children
+$refs
+<cpn ref="aaa"></cpn>
+$refs会加入一个aaa的属性
+$refs.aaa.XXX 就能直接拿到对应的 cpn
+
+子组件访问父组件: $parent
+子组件中使用: this.$parent 访问父组件内容(用得很少)
+访问根组件 $root
+
+**插槽 slot**
+组件插槽: 更加具有扩展性
+
+1. 插槽的基本使用<slot></slot>
+2. 插槽的默认值<slot>button</slot> 没有传插槽会显示默认值
+3. 如果有多个值，同时放入到组件中进行替换时，一起作为替换元素
+
+具名插槽
+slot 加名字
+v-slot
+
+插槽作用域
+
+**模块化开发**
+export modules
+
+**Webpack**
+webpack 是一个现代化 javascript 应用的静态模块化打包工具
+
+gulp 和 webpack 区别: gulp 强调的是前端流程自动化，模块化不是核心
+webpack 更加强调模块化开发管理。文件压缩合并，预处理
