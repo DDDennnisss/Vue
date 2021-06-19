@@ -16,7 +16,8 @@ A repo of learning Vue
 | [准备面试]                                                                                  | 2021-06-08 ---- 2021-06-16 | 准备阿里面试暂停学习 |
 | [Vue 高级函数]                                                                              | 2021-06-16                 | P34 -- P45           |
 | [Vue 阶段知识总结](https://www.bilibili.com/video/BV15741177Eh?p=63&spm_id_from=pageDriver) | 2021-06-17                 | P46 -- P63           |
-| [Vue 阶段知识总结]                                                                          | 2021-06-18                 | P64 -- P75           |
+| [Vue 组件化]                                                                                | 2021-06-18                 | P64 -- P70           |
+| [Vue 模块化 webpack]                                                                        | 2021-06-19                 | P70 -- P85           |
 
 #Vue 基础
 
@@ -153,3 +154,10 @@ webpack 是一个现代化 javascript 应用的静态模块化打包工具
 
 gulp 和 webpack 区别: gulp 强调的是前端流程自动化，模块化不是核心
 webpack 更加强调模块化开发管理。文件压缩合并，预处理
+
+webpack 笔记 去 git repo webpack-rollup 找
+
+runtime-only 代码中不可以有任何 template 挂载实例的#app 中含有 vue 的 template
+runtime-complier 可以有 template 可编译
+
+**el 和 template 区别**
