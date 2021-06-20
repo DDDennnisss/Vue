@@ -17,7 +17,7 @@ A repo of learning Vue
 | [Vue 高级函数]                                                                              | 2021-06-16                 | P34 -- P45           |
 | [Vue 阶段知识总结](https://www.bilibili.com/video/BV15741177Eh?p=63&spm_id_from=pageDriver) | 2021-06-17                 | P46 -- P63           |
 | [Vue 组件化]                                                                                | 2021-06-18                 | P64 -- P70           |
-| [Vue 模块化 webpack]                                                                        | 2021-06-19                 | P70 -- P85           |
+| [Vue 模块化 webpack]                                                                        | 2021-06-19                 | P70 -- P84           |
 
 #Vue 基础
 
