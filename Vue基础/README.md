@@ -18,8 +18,9 @@ A repo of learning Vue
 | [Vue 阶段知识总结](https://www.bilibili.com/video/BV15741177Eh?p=63&spm_id_from=pageDriver) | 2021-06-17                 | P46 -- P63           |
 | [Vue 组件化]                                                                                | 2021-06-18                 | P64 -- P70           |
 | [Vue 模块化 webpack]                                                                        | 2021-06-19                 | P70 -- P84           |
+| [Vue 脚手架]                                                                                | 2021-06-20                 | P85 -- P96           |
 
-#Vue 基础
+# Vue 基础
 
 **插值操作**
 v-for, v-on:click(...), v-once(只渲染一次), v-html(解析 html 代码)，v-text(代替 mustache 语法),v-pre(不解析渲染), v-cloak(防止原生 DOM 属性渲染),
@@ -100,12 +101,15 @@ v-model 结合 select 类型
 多选框对应的是数组 multiple 属性 tag
 
 **值绑定**
+
+```
 <label v-for="item in originHobbies" :for="item">
 <input type="checkbox" :value="item" :id="item" v-model="hobbies">{{item}}
 </label>
+```
 
 **V-model 修饰符**
-<input type="text" v-model.lazy="message"> //失去焦点或者按回车才会更新 类似防抖
+`<input type="text" v-model.lazy="message"> //失去焦点或者按回车才会更新 类似防抖`
 .number
 .trim
 
@@ -125,7 +129,7 @@ $emit() 自定义事件 @-XXXX
 **父子对象的访问方式**
 父组件访问子组件: $children
 $refs
-<cpn ref="aaa"></cpn>
+`<cpn ref="aaa"></cpn>`
 $refs会加入一个aaa的属性
 $refs.aaa.XXX 就能直接拿到对应的 cpn
 
@@ -161,3 +165,17 @@ runtime-only 代码中不可以有任何 template 挂载实例的#app 中含有 
 runtime-complier 可以有 template 可编译
 
 **el 和 template 区别**
+el 挂在 id=app 的代码块
+template 会替换掉 el 的代码块
+
+### runtime-compiler VS runtime-only
+
+runtime-compiler(v1)
+template -> ast -> render ->vdom -> UI
+
+runtime-only(v2) 性能更高 代码量更少 不能编译 template
+render -> vdom -> UI
+
+webpack 中配置了
+vue-template-compiler 解析了所有 vue 文件里的 template 转成 render 函数了
+所以不需要使用 runtime-compiler 了
