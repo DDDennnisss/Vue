@@ -47,14 +47,14 @@ v-bind(img v-bind:src=""绑定动态属性)
 <h1 :class="[active,line]">   变量
 ```
 
-同等与 <h1 class="active line">
+同等与 `<h1 class="active line">`
 
 **计算属性**
 computed : 用于合并属性,计算属性(比如商品总价格)
 
 **Event 绑定**
 
-<h1 @click="btnClick(a, $event)"> $是拿event属性
+`<h1 @click="btnClick(a, $event)"> $是拿event属性`
 
 **修饰符**
 @click.stop 阻止冒泡
@@ -88,8 +88,11 @@ DIFF 算法查 React 笔记
 3. reduce
 
 **双向绑定**
+
+```
 <input type="text" v-model="message"> //等于下面
 <input type="text" :value="message" @input="message = $event.target.value">
+```
 
 v-model 结合 radio 类型
 
