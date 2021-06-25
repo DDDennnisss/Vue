@@ -23,7 +23,7 @@ A repo of learning Vue
 | [准备驾考]                                                                                  | 2021-06-21 -- 2021-06-25 | 准备驾考(拿到驾照了:D) |
 | [url 的 hash 和 html 的 history]                                                            | 2021-06-25               | P101 -- P102           |
 
-# Vue 基础
+## Vue 基础
 
 **插值操作**
 v-for, v-on:click(...), v-once(只渲染一次), v-html(解析 html 代码)，v-text(代替 mustache 语法),v-pre(不解析渲染), v-cloak(防止原生 DOM 属性渲染),
