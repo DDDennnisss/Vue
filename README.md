@@ -34,16 +34,18 @@ v-show：当条件为 false 时，v-show 的元素在 DOM 中只是加了 displa
 v-for: 遍历数组对象
 
 v-bind(img v-bind:src=""绑定动态属性)
-简写 <img :src=""> 同 <img v-bind:src="">
+简写 `<img :src="">` 同 `<img v-bind:src="">`
 
 **绑定对象**
 
-<h1 :class="{active: true, line: false}"> 可以用data数据替换boolean达到控制变量
+`<h1 :class="{active: true, line: false}"> 可以用data数据替换boolean达到控制变量`
 
 **绑定数组**
 
+```
 <h1 :class="['active','line']">  字符串
 <h1 :class="[active,line]">   变量
+```
 
 同等与 <h1 class="active line">
 
@@ -65,12 +67,14 @@ computed : 用于合并属性,计算属性(比如商品总价格)
 
 **条件判断**
 
+```
 <div id="app"> //复杂不要用这个 去compute里写逻辑语句
   <p v-if ="score>=90">Excellent</p>
   <p v-if-else ="90>=score>=80">Good</p>
   <p v-if-else ="score>=90">Not Bad</p>
   <p v-else ="score<=60">Failure</p>
 </div>
+```
 
 **虚拟 DOM 和 DIFF 算法**
 DIFF 算法查 React 笔记
@@ -88,11 +92,14 @@ DIFF 算法查 React 笔记
 <input type="text" :value="message" @input="message = $event.target.value">
 
 v-model 结合 radio 类型
+
+```
 <input type="radio" id="female" name="sex" value="女"> //如果需要互斥选项，需要绑定同一组 name 名
 <input type="radio" id="male" name="sex" value="男">
 
 <input type="radio" id="female" value="女" v-model="sex"> //如果有 v-model，绑定同一组 name 名可以省略
 <input type="radio" id="male"  value="男" v-model="sex">
+```
 
 v-model 结合 checkbox 类型
 单选框对应的是 boolean
