@@ -9,18 +9,26 @@ const About = () => import('../components/About.vue')
 const User = () => import('../components/User.vue')
 const HomeMessage = () => import('../components/HomeMessage.vue')
 const HomeNews = () => import('../components/HomeNews.vue')
+const Profile = () => import('../components/Profile.vue')
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/home',
   },
   {
     path: '/home',
     component: Home,
+    meta: {
+      title: 'home'
+    },
     children: [
+      {
+        path: '',
+        redirect: 'news'
+      },
       {
         path: 'news',
         component: HomeNews
@@ -33,12 +41,25 @@ const routes = [
   },
   {
     path: '/about',
-    component: About
+    component: About,
+    meta: {
+      title: 'about'
+    }
   },
   {
     path: '/user/:userId',
-    component: User
+    component: User,
+    meta: {
+      title: 'user'
+    }
   },
+  {
+    path: '/profile',
+    component: Profile,
+    meta: {
+      title: 'profile'
+    }
+  }
 ]
 
 const router = new VueRouter({
@@ -48,6 +69,10 @@ const router = new VueRouter({
   linkActiveClass: 'active'
 })
 
+router.beforeEach((to, from, next) => {
+  document.title = (to.matched[1] == null) ? (to.matched[0].meta.title) : (to.meta.title)
+  next()
+})
 // 将router对象传入vue实例中
 
 export default router;

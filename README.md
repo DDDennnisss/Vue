@@ -206,6 +206,9 @@ vue-template-compiler 解析了所有 vue 文件里的 template 转成 render �
 
 2. 运行期间生命周期函数
 
+   1. mounted()把组件挂在在 dom 上回调 mounted. 类似 componentDidMount()
+   2. updated()只要是数据改变界面刷新完成，回调 updated, 类似 componentDidUpdate()
+
 3. 销毁期间的生命周期函数
 
 **21. 前后端渲染**
@@ -308,3 +311,27 @@ const User = () => import('../components/User.vue')
 ```
 
 4. Vue 嵌套路由
+   使用 children 然后在对应组件中配置 link 和 view
+
+```
+ {
+    path: '/',
+    redirect: '/home'
+  },
+  {
+    path: '/home',
+    component: Home,
+    children: [
+      {
+        path: '',
+        redirect: 'news'
+      },
+```
+
+5. 路由传参
+   params:用于少量数据路由传参
+   query：用于大量数据路由传参
+
+**24. Vue 导航守卫**
+全局导航守卫
+监听 route 跳转

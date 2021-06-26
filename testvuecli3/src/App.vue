@@ -3,8 +3,12 @@
     <router-link to="/home">Home</router-link>
     <router-link to="/about" >About</router-link>
     <router-link :to="'/user/'+userId" >User</router-link>
+    <router-link :to="{path:'/profile',query:{name:'Dennis',age:25}}">
+    Profile</router-link>
     <!-- <button @click="homeClick">home</button>
     <button @click="aboutClick">about</button> -->
+    <button @click="userClick">User</button>
+    <button @click="profileClick">Profile</button>
     <router-view></router-view>
   </div>
 </template>
@@ -23,6 +27,18 @@
       },
       aboutClick(){
         this.$router.replace('/about')
+      },
+      userClick(){
+        this.$router.replace('/user/'+this.userId)
+      },
+      profileClick(){
+        this.$router.push({
+          path:'/profile',
+          query:{
+            name:'tianshi',
+            age:20
+          }
+        })
       }
     }
   }
