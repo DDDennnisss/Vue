@@ -202,14 +202,18 @@ vue-template-compiler 解析了所有 vue 文件里的 template 转成 render �
    init Event& Lifecycle 表示刚刚初始化了一个 Vue 的实例对象。只有初始的一些函数
 
    1. beforeCreate() 第一个生命周期函数，表示实例完全被创建之前会执行它 它与 data el 等实例函数平级，拿不到初始数据，都还没被初始化
-   2. create() 第二个生命周期函数 可以拿到初始 method 和数据
+   2. create() 第二个生命周期函数, 初始化完成 可以拿到初始 method 和数据
+   3. beforeMount() 在挂在之前 类似 ComponentWillMount()
 
 2. 运行期间生命周期函数
 
    1. mounted()把组件挂在在 dom 上回调 mounted. 类似 componentDidMount()
-   2. updated()只要是数据改变界面刷新完成，回调 updated, 类似 componentDidUpdate()
+   2. beforeUpdate() 数据界面刷新之前 VDOM re-render。调用 diff 算法
+   3. updated()只要是数据改变界面刷新完成，回调 updated, 类似 componentDidUpdate()
 
 3. 销毁期间的生命周期函数
+   1. beforeDestroy() 销毁组件之前 类似 componentWillUnmount();
+   2. destroyed() 销毁组件
 
 **21. 前后端渲染**
 
@@ -335,3 +339,27 @@ const User = () => import('../components/User.vue')
 **24. Vue 导航守卫**
 全局导航守卫
 监听 route 跳转
+meta:元数据（描述数据的数据）
+
+```
+//前置钩子
+router.beforeEach((to, from, next) => {
+  document.title = (to.matched[1] == null) ? (to.matched[0].meta.title) : (to.meta.title)
+  next()
+})
+
+//后置钩子
+router.afterEach((to, from) => {
+  document.title = (to.matched[1] == null) ? (to.matched[0].meta.title) : (to.meta.title)
+})
+```
+
+路由独享守卫：在路由内配置 beforeEnter()
+
+组件内的守卫：在组件内定义 beforeRouterEnter(), beforeRouterUpdate(), beforeRouterLeave()
+可以理解为 router 的生命周期
+
+**25. Vue-Router 和 keep-alive**
+
+keep-alive 当路由跳转回之前 router 又不想重新加载 router，可以用 keep-alive
+<strong>router-view</strong> 也是一个组件，如果直接被抱在 keep-alive 里面，所有的路径匹配的视图组件都会被<strong>缓存</strong>.
