@@ -21,7 +21,8 @@ A repo of learning Vue
 | [Vue 脚手架]                                                                                | 2021-06-20               | P85 -- P96             |
 | [Vue 路由]                                                                                  | 2021-06-22               | P97 -- P100            |
 | [准备驾考]                                                                                  | 2021-06-21 -- 2021-06-25 | 准备驾考(拿到驾照了:D) |
-| [url 的 hash 和 html 的 history]                                                            | 2021-06-25               | P101 -- P102           |
+| [url 的 hash 和 html 的 history]                                                            | 2021-06-25               | P101 -- P103           |
+| [Vue 路由使用]                                                                              | 2021-06-26               | P104 -- P103           |
 
 ## Vue 基础
 
@@ -228,3 +229,82 @@ vue-template-compiler 解析了所有 vue 文件里的 template 转成 render �
    整个网页是一个页面
 
 **22. URL 的 hash 和 HTML5 的 history**
+
+1. hash = "#/..."
+   `location.hash=''`可以改变 hash，同时不刷新页面
+   `location.href=''`超链接，会刷新页面
+
+2. history
+
+```
+history.pushState({},'',"/user")
+history.replaceState()
+history.go()
+history.forward()
+history.back()
+```
+
+**23. Vue 路由的使用**
+
+1. router-link 和 router-view
+
+```
+<router-link> 会渲染成a 和React中<Link>同理
+<router-view> 渲染位置
+
+<div id="app">
+    <router-link to="/home" tag="button" replace>Home</router-link>
+    <router-link to="/about" tag="button">About</router-link>
+    <router-view></router-view>
+  </div>
+```
+
+2. $router 和 $route 区别
+
+$router 是 VueRouter routes[]的映射(路由器)
+
+```
+ export default {
+    name: 'App',
+    data(){
+      return{
+        userId:'list'
+      }
+    },
+    methods:{
+      homeClick(){
+        this.$router.push('/home')
+      },
+      aboutClick(){
+        this.$router.replace('/about')
+      }
+    }
+  }
+```
+
+$route 是 当前 route 路径的映射(路由)
+
+```
+export default {
+  name:'User',
+  computed:{
+    userId(){
+      return this.$route
+    }
+  }
+}
+```
+
+3. Vue 懒加载
+   类似于 React 懒加载
+   将路由对应的组件打包成一个个 js 代码块，访问到时才加载对应组件
+
+ES6 懒加载写法
+
+```
+const Home = () => import('../components/Home.vue')
+const About = () => import('../components/About.vue')
+const User = () => import('../components/User.vue')
+```
+
+4. Vue 嵌套路由

@@ -1,28 +1,35 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <router-link to="/home">Home</router-link>
+    <router-link to="/about" >About</router-link>
+    <router-link :to="'/user/'+userId" >User</router-link>
+    <!-- <button @click="homeClick">home</button>
+    <button @click="aboutClick">about</button> -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default {
+    name: 'App',
+    data(){
+      return{
+        userId:'Dennis'
+      }
+    },
+    methods:{
+      homeClick(){
+        this.$router.push('/home')
+      },
+      aboutClick(){
+        this.$router.replace('/about')
+      }
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .active{
+    color: red;
+  }
 </style>
