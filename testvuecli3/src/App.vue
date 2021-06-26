@@ -9,7 +9,9 @@
     <button @click="aboutClick">about</button> -->
     <button @click="userClick">User</button>
     <button @click="profileClick">Profile</button>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 

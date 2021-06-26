@@ -11,7 +11,16 @@
 
 <script>
 export default {
-  name:'Home'
+  name:'Home',
+  activated(){
+    
+  },
+  deactivated(){
+
+  }, 
+  beforeRouteLeave(){
+    
+  }
 }
 </script>
 

@@ -22,7 +22,7 @@ A repo of learning Vue
 | [Vue 路由]                                                                                  | 2021-06-22               | P97 -- P100            |
 | [准备驾考]                                                                                  | 2021-06-21 -- 2021-06-25 | 准备驾考(拿到驾照了:D) |
 | [url 的 hash 和 html 的 history]                                                            | 2021-06-25               | P101 -- P103           |
-| [Vue 路由使用]                                                                              | 2021-06-26               | P104 -- P103           |
+| [Vue 路由使用]                                                                              | 2021-06-26               | P104 -- P118           |
 
 ## Vue 基础
 
@@ -363,3 +363,10 @@ router.afterEach((to, from) => {
 
 keep-alive 当路由跳转回之前 router 又不想重新加载 router，可以用 keep-alive
 <strong>router-view</strong> 也是一个组件，如果直接被抱在 keep-alive 里面，所有的路径匹配的视图组件都会被<strong>缓存</strong>.
+
+activated()和 deactivated()只有在 keep-alive 包裹时才能用
+当前路由激活时会触发 activated()钩子
+
+keep-alive 排除属性
+include 和 exclude
+`<keep-alive exclude="Profile,User"></keep-alive>`
