@@ -23,6 +23,7 @@ A repo of learning Vue
 | [准备驾考]                                                                                  | 2021-06-21 -- 2021-06-25 | 准备驾考(拿到驾照了:D) |
 | [url 的 hash 和 html 的 history]                                                            | 2021-06-25               | P101 -- P103           |
 | [Vue 路由使用]                                                                              | 2021-06-26               | P104 -- P118           |
+| [Vue 路由使用]                                                                              | 2021-06-26               | P119 -- P124           |
 
 ## Vue 基础
 
@@ -337,6 +338,7 @@ const User = () => import('../components/User.vue')
    query：用于大量数据路由传参
 
 **24. Vue 导航守卫**
+
 全局导航守卫
 监听 route 跳转
 meta:元数据（描述数据的数据）
@@ -370,3 +372,17 @@ activated()和 deactivated()只有在 keep-alive 包裹时才能用
 keep-alive 排除属性
 include 和 exclude
 `<keep-alive exclude="Profile,User"></keep-alive>`
+
+**26. Promise**
+
+看源码
+
+**27. Vuex**
+响应式数据共享(需要在公共使用的)
+
+一般用于登录状态，用户名称，头像，地理位置
+token 保存在 vuex 里
+购物车物品
+
+单页面状态管理
+view --> action --> state --> view
