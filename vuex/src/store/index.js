@@ -8,7 +8,12 @@ const store = new Vuex.Store({
     counter: 1000
   },
   mutations: {
-
+    increment(state) { //对应上面state对象
+      state.counter++;
+    },
+    decrement(state) { //对应上面state对象
+      state.counter--;
+    }
   },
   actions: {
 

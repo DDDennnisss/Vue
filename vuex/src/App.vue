@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <h2>{{message}}</h2>
-    <h2>{{counter}}</h2>
-    <button @click="counter++">+</button>
-    <button @click="counter--">-</button>
+    <h2>{{$store.state.counter}}</h2>
+    <button @click="addition">+</button>
+    <button @click="substraction">-</button>
     <hello-world :counter = "counter" />
   </div>
 </template>
@@ -13,10 +13,12 @@ import HelloWorld from './components/HelloWorld.vue';
 
 export default {
   name: 'App',
-  data(){
-    return {
-      message:'我是App组件',
-      counter: 0
+  methods:{
+    addition(){
+      this.$store.commit('increment')
+    },
+    substraction(){
+      this.$store.commit('decrement')
     }
   },
   components:{
