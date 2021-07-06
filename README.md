@@ -8,25 +8,26 @@ A repo of learning Vue
 
 **学习进度：**
 
-| **学习内容**                                                                                | **更新时间**             | **备注**                     |
-| ------------------------------------------------------------------------------------------- | ------------------------ | ---------------------------- |
-| [Vue 介绍]                                                                                  | 2021-06-05               | P1 -- P20                    |
-| [Vue 指令]                                                                                  | 2021-06-06               | P21 -- P27                   |
-| [Vue 方法绑定]                                                                              | 2021-06-08               | P28 -- P33                   |
-| [准备面试]                                                                                  | 2021-06-08 -- 2021-06-16 | 准备阿里面试暂停学习         |
-| [Vue 高级函数]                                                                              | 2021-06-16               | P34 -- P45                   |
-| [Vue 阶段知识总结](https://www.bilibili.com/video/BV15741177Eh?p=63&spm_id_from=pageDriver) | 2021-06-17               | P46 -- P63                   |
-| [Vue 组件化]                                                                                | 2021-06-18               | P64 -- P70                   |
-| [Vue 模块化 webpack]                                                                        | 2021-06-19               | P70 -- P84                   |
-| [Vue 脚手架]                                                                                | 2021-06-20               | P85 -- P96                   |
-| [Vue 路由]                                                                                  | 2021-06-22               | P97 -- P100                  |
-| [准备驾考]                                                                                  | 2021-06-21 -- 2021-06-25 | 准备驾考(拿到驾照了:D)       |
-| [url 的 hash 和 html 的 history]                                                            | 2021-06-25               | P101 -- P103                 |
-| [Vue 路由使用]                                                                              | 2021-06-26               | P104 -- P118                 |
-| [Vue 路由使用]                                                                              | 2021-06-27               | P119 -- P131                 |
-| [准备面试]                                                                                  | 2021-06-28 -- 2021-06-29 | 准备阿里云面试暂停学习       |
-| [准备面试]                                                                                  | 2021-06-29 -- 2021-07-05 | 阿里云笔试 1 面过等 2 面结果 |
-| [Vuex 方法]                                                                                 | 2021-07-05               | P132 -- P134 明天补起来      |
+| **学习内容**                                                                                | **更新时间**             | **备注**                      |
+| ------------------------------------------------------------------------------------------- | ------------------------ | ----------------------------- |
+| [Vue 介绍]                                                                                  | 2021-06-05               | P1 -- P20                     |
+| [Vue 指令]                                                                                  | 2021-06-06               | P21 -- P27                    |
+| [Vue 方法绑定]                                                                              | 2021-06-08               | P28 -- P33                    |
+| [准备面试]                                                                                  | 2021-06-08 -- 2021-06-16 | 准备阿里面试暂停学习          |
+| [Vue 高级函数]                                                                              | 2021-06-16               | P34 -- P45                    |
+| [Vue 阶段知识总结](https://www.bilibili.com/video/BV15741177Eh?p=63&spm_id_from=pageDriver) | 2021-06-17               | P46 -- P63                    |
+| [Vue 组件化]                                                                                | 2021-06-18               | P64 -- P70                    |
+| [Vue 模块化 webpack]                                                                        | 2021-06-19               | P70 -- P84                    |
+| [Vue 脚手架]                                                                                | 2021-06-20               | P85 -- P96                    |
+| [Vue 路由]                                                                                  | 2021-06-22               | P97 -- P100                   |
+| [准备驾考]                                                                                  | 2021-06-21 -- 2021-06-25 | 准备驾考(拿到驾照了:D)        |
+| [url 的 hash 和 html 的 history]                                                            | 2021-06-25               | P101 -- P103                  |
+| [Vue 路由使用]                                                                              | 2021-06-26               | P104 -- P118                  |
+| [Vue 路由使用]                                                                              | 2021-06-27               | P119 -- P131                  |
+| [准备面试]                                                                                  | 2021-06-28 -- 2021-06-29 | 准备阿里云面试暂停学习        |
+| [准备面试]                                                                                  | 2021-06-29 -- 2021-07-05 | 阿里云笔试, 1 面过等 2 面结果 |
+| [Vuex 方法]                                                                                 | 2021-07-05               | P132 -- P137 明天开始恶补起来 |
+| [Mutation, actions, axios]                                                                  | 2021-07-06               | P138 -- P147 Vue 理论结束     |
 
 ## Vue 基础
 
@@ -391,7 +392,110 @@ token 保存在 vuex 里
 view --> action --> mutations--> state --> view
 
 1. actions:用来存放异步操作方法 请求数据
-2. mutation:用来修改数据可以被 devtools 追踪 不要直接修改 state 不能跟踪
+2. mutation:用来修改数据可以被 devtools 追踪 不要直接修改 state 不能跟踪 改 store 里的 state 一定是通过 mutations
 3. state:用来存放共享数据
 4. commit: 用来调用 mutation 里的方法
 5. getters: 全局计算属性
+6. modules: 模组
+
+**28. Mutation 类型常量和同步函数**
+类型常量：防止命名错误
+
+```
+  mutations: {
+    [INCREMENT](state) { //对应上面state对象
+      state.counter++;
+    },
+    decrement(state) { //对应上面state对象
+      state.counter--;
+    }
+  },
+```
+
+同步函数：mutation 中不能使用异步操作，不然 vue devtools 不会检测到，如果需要用 actions
+mutation 用 store 的 commit 调用
+action 用 store 的 dispatch 调用
+modules 中 context 是指的当前 store 但是在 modules 里的模组 context 指向自 modules
+
+**29. axios.all 和 axios.spread**
+
+axios.all 处理并发请求 类似 promise.all
+
+axios.spread 分离 res1 和 res2 一般不用，数据多的话使用 map 遍历
+
+axios.default.baseURL 设置后就不需要输入全部 url 了
+
+**30. axios 实例与封装**
+
+不同的 BaseURL 需要不同实例
+
+```
+const instance1 = axios.create({
+  baseURL: 'http://222.111.33.3.3:8000',
+  timeout: 5000
+})
+
+instance1({
+  url: '/home/data',
+  params: {
+    type: 'pop',
+    page: '1'
+  }
+}).then(res => {
+  console.log(res);
+})
+
+const instance2 = axios.create({
+  baseURL: 'http://333.123.23.3.1:8000',
+  timeout: 3000
+})
+```
+
+axios 封装
+
+```
+export function request(config) {
+  return new Promise((resolve, reject) => {
+    const instance = axios.create({
+      baseURL: 'http://123.207.32.32:8000',
+      timeout: 5000
+    })
+
+    instance(config).then(res => {
+      resolve(res)
+    }).catch(err => {
+      reject(err)
+    })
+  })
+}
+```
+
+axios 拦截器
+
+请求拦截作用
+
+1. config 中拦截一些信息不符合要求，或者需要转化
+2. 每次发送网络，都显示一个请求图标
+3. 某些网络请求比如登录， 必须携带一些特殊信息，如果没有 token 跳转登录
+
+```
+instance.interceptors.request.use(config=>{
+  console.log(config)
+  return config //如果不反悔config就被拦截了axios会error
+}, err =>{
+  console.log(err)
+});
+
+```
+
+响应拦截
+
+```
+instance.interceptors.response.use(res=>{
+  console.log(res)
+  return res.data //同理请求
+}, err =>{
+  console.log(err)
+});
+
+```
