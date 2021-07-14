@@ -28,7 +28,7 @@ A repo of learning Vue
 | [准备面试]                                                                                  | 2021-06-29 -- 2021-07-05 | 阿里云笔试, 1 面过等 2 面结果  |
 | [Vuex 方法]                                                                                 | 2021-07-05               | P132 -- P137 明天开始恶补起来  |
 | [Mutation, actions, axios]                                                                  | 2021-07-06               | P138 -- P147 Vue 理论结束      |
-| 完结                                                                                        | 2021-07-06               | 项目更新在 git repo CartStreet |
+| 完结                                                                                        | 2021-07-06               | 项目更新在 git repo Travel |
 
 ## Vue 基础
 
